@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/layout}">
+
+<main layout:fragment="content">
+  <div class="container py-5">
+    <h2 class="d-inline" th:text="${service.name}"></h2>
+    <h4 class="d-inline" th:text="' (with ' + ${worker.name}  + ')'"></h4>
+    <h3 th:text="${dateString} + ' at ' + ${timeString}"></h3>
+    <form method="post" th:object="${requestDto}" th:action="@{/book/save}" class="col-lg-6 row g-3 mt-2">
+      <div class="col-12">
+        <input type="text" class="form-control" placeholder="Имя" th:field="*{clientName}">
+        <div class="d-block" th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}"
+             th:errorclass="invalid-feedback"></div>
+      </div>
+      <div class="col-12">
+        <input type="email" class="form-control" placeholder="Email" th:field="*{clientEmail}">
+        <div class="d-block" th:if="${#fields.hasErrors('clientEmail')}" th:errors="*{clientEmail}"
+             th:errorclass="invalid-feedback"></div>
+      </div>
+      <div class="col-12">
+        <input type="text" class="form-control" placeholder="Номер телефона" th:field="*{clientPhoneNumber}">
+        <div class="d-block" th:if="${#fields.hasErrors('clientPhoneNumber')}" th:errors="*{clientPhoneNumber}"
+             th:errorclass="invalid-feedback"></div>
+      </div>
+      <div class="col-12">
+                <textarea class="form-control" rows="3" placeholder="Комментарий(если необходимо)"
+                          th:field="*{comments}"></textarea>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary me-5">Записаться</button>
+        <a th:href="@{/}">Отмена</a>
+      </div>
+      <input type="hidden" id="requestDate" name="requestDate" th:value="${dateString}">
+      <input type="hidden" id="startTime" name="startTime" th:value="${timeString}">
+      <input type="hidden" id="serviceId" name="serviceId" th:value="${service.id}">
+      <input type="hidden" id="workerId" name="workerId" th:value="${worker.id}">
+    </form>
+  </div>
+</main>
+</html>
