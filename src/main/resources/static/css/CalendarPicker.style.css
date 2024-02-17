@@ -74,7 +74,7 @@
 #calendar #calendar-grid time.selected,
 #calendar #calendar-grid time.selected:focus {
     outline: none;
-    border: 2px solid #c64949;
+    border: 2px solid #b98fc7;
     box-sizing: inherit;
 }
 

@@ -6,8 +6,8 @@
 <main layout:fragment="content">
   <div class="container py-5">
     <h2 class="d-inline" th:text="${service.name}"></h2>
-    <h4 class="d-inline" th:text="' (with ' + ${worker.name}  + ')'"></h4>
-    <h3 th:text="${dateString} + ' at ' + ${timeString}"></h3>
+    <h4 class="d-inline" th:text="' (с ' + ${worker.name}  + ')'"></h4>
+    <h3 th:text="${dateString} + ' на ' + ${timeString}"></h3>
     <form method="post" th:object="${requestDto}" th:action="@{/book/save}" class="col-lg-6 row g-3 mt-2">
       <div class="col-12">
         <input type="text" class="form-control" placeholder="Имя" th:field="*{clientName}">

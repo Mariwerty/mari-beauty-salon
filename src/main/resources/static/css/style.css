@@ -1,9 +1,9 @@
 /********** Template CSS **********/
 :root {
-    --primary: #e528cc;
-    --secondary: #8535a2;
-    --light: #6C7293;
-    --dark: #500f47;
+    --primary: #e5afde;
+    --secondary: #b98fc7;
+    --light: #acb6e5;
+    --dark: #a16a9b;
 }
 
 /*** Button ***/
@@ -43,7 +43,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(136, 25, 134, 0.85);
+    /*background: rgba(231, 192, 225, 0.85);*/
     z-index: 1;
 }
 
