@@ -1,10 +1,8 @@
 package com.project.maribeauty.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jdk.jshell.Snippet;
+import lombok.*;
 
 import java.sql.Array;
 import java.util.ArrayList;
@@ -15,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name="users")
 public class User {
     @Id
@@ -36,5 +35,6 @@ public class User {
             joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
             inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="id")})
     private List<Role> roles = new ArrayList<>();
+
 }
 

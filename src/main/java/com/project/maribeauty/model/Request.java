@@ -1,6 +1,5 @@
 package com.project.maribeauty.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -44,7 +43,6 @@ public class Request {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "worker_id")
     private Worker worker;
-
 
 
 

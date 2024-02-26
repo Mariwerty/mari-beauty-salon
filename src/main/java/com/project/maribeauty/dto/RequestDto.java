@@ -1,5 +1,7 @@
 package com.project.maribeauty.dto;
 
+import com.project.maribeauty.model.ServiceItem;
+import com.project.maribeauty.model.Worker;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -25,5 +27,9 @@ public class RequestDto {
     private String clientEmail;
     private Integer serviceId;
     private Integer workerId;
+    private String serviceName;
+    private String workerName;
 
+    public RequestDto(Long id, LocalTime startTime, String name, String phoneNumber, String name1, String name2) {
+    }
 }

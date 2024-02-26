@@ -1,10 +1,7 @@
 package com.project.maribeauty.services.impl;
 
 import com.project.maribeauty.dto.RequestDto;
-import com.project.maribeauty.model.Client;
-import com.project.maribeauty.model.Request;
-import com.project.maribeauty.model.ServiceItem;
-import com.project.maribeauty.model.Worker;
+import com.project.maribeauty.model.*;
 import com.project.maribeauty.repositories.RequestRepository;
 import com.project.maribeauty.services.ClientService;
 import com.project.maribeauty.services.RequestService;
@@ -19,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -29,13 +27,13 @@ public class RequestServiceImpl implements RequestService {
     private final ClientService clientService;
     private final ModelMapper mapper;
 
-    @org.springframework.beans.factory.annotation.Value("09:00")
+    @org.springframework.beans.factory.annotation.Value("10:00")
     private String openingHour;
 
     @org.springframework.beans.factory.annotation.Value("20:00")
     private String closingHour;
 
-    @org.springframework.beans.factory.annotation.Value("30")
+    @org.springframework.beans.factory.annotation.Value("60")
     private String durationTime;
 
     @Override
@@ -78,5 +76,25 @@ public class RequestServiceImpl implements RequestService {
                 .client(client)
                 .build();
         requestRepository.save(request);
+    }
+
+    @Override
+    public List<RequestDto> findAllRequests() {
+        List<Request> requests = requestRepository.findAll();
+        return requests.stream()
+                .map((request) -> mapToRequestDto(request))
+                .collect(Collectors.toList());
+    }
+
+
+    private RequestDto mapToRequestDto(Request request){
+        RequestDto requestDto = new RequestDto();
+        requestDto.setRequestDate(request.getRequestDate());
+        requestDto.setStartTime(request.getStartTime());
+        requestDto.setClientName(request.getClient().getName());
+        requestDto.setClientPhoneNumber(request.getClient().getPhoneNumber());
+        requestDto.setWorkerName(request.getWorker().getName());
+        requestDto.setServiceName(request.getServiceItem().getName());
+        return requestDto;
     }
 }

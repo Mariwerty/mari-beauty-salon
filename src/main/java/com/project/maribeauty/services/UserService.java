@@ -6,7 +6,7 @@ import com.project.maribeauty.model.User;
 import java.util.List;
 
 public interface UserService {
-    void saveUser(UserDto userDto);
+    UserDto saveUser(UserDto userDto);
 
     User findUserByEmail(String email);
 

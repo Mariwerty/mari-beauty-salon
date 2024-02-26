@@ -6,6 +6,8 @@ import com.project.maribeauty.services.WorkerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class WorkerServiceImpl implements WorkerService {
@@ -14,5 +16,10 @@ public class WorkerServiceImpl implements WorkerService {
     @Override
     public Worker getWorkerById(Integer workerId) {
         return workerRepository.findById(workerId).orElse(null);
+    }
+
+    @Override
+    public List<Worker> getAllWorkers() {
+        return workerRepository.findAll();
     }
 }

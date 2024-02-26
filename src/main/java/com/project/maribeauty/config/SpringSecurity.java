@@ -30,13 +30,16 @@ public class SpringSecurity {
                         authorize.requestMatchers("/", "index", "/js/***", "/css/**", "/img/**",
                                         "/layout/layout", "/fragments/carousel",
                                         "/fragments/navbar", "/fragments/working_hours", "/book/**").permitAll()
-                                .requestMatchers("/register/**").permitAll()
-                                .requestMatchers("/users").hasRole("ADMIN")
+                                .requestMatchers("/register/**", "/login/**", "/success").permitAll()
+                                .requestMatchers("/admin/**", "/admin/admin_index").hasRole("ADMIN")
+                                .requestMatchers("/user_index").hasRole("USER")
            ).formLogin(
                    form -> form
                            .loginPage("/login")
                            .loginProcessingUrl("/login")
-                           .defaultSuccessUrl("/users")
+//                           .defaultSuccessUrl("/admin/admin_index")
+//                           .permitAll()
+                           .defaultSuccessUrl("/success", true)
                            .permitAll()
         ).logout(
                 logout -> logout

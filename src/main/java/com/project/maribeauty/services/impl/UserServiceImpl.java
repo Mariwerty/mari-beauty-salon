@@ -29,19 +29,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(UserDto userDto) {
+    public UserDto saveUser(UserDto userDto) {
         User user = new User();
         user.setName(userDto.getFirstName() + " " + userDto.getLastName());
         user.setEmail(userDto.getEmail());
         // encrypt the password using spring security
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
-        Role role = roleRepository.findByName("ROLE_ADMIN");
+        Role role = roleRepository.findByName("ROLE_USER");
         if(role == null){
             role = checkRoleExist();
         }
         user.setRoles(Arrays.asList(role));
         userRepository.save(user);
+        return userDto;
     }
 
     @Override
@@ -68,7 +69,7 @@ public class UserServiceImpl implements UserService {
 
     private Role checkRoleExist(){
         Role role = new Role();
-        role.setName("ROLE_ADMIN");
+        role.setName("ROLE_USER");
         return roleRepository.save(role);
     }
 }
