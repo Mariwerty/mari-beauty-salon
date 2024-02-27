@@ -33,4 +33,6 @@ public class ServiceItem {
             inverseJoinColumns = @JoinColumn(name = "worker_id"))
     private List<Worker>workers;
 
+    public ServiceItem(int i, String manicure, int i1, int i2, String manicure1) {
+    }
 }

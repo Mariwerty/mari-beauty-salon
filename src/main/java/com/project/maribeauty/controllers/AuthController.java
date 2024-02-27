@@ -48,7 +48,7 @@ public class AuthController {
 
         if (result.hasErrors()) {
             model.addAttribute("user", userDto);
-            return "/register";
+            return "register";
         }
 
         userService.saveUser(userDto);
@@ -75,11 +75,11 @@ public class AuthController {
     @GetMapping("/success")
     public String loginPageRedirect(HttpServletRequest httpServletRequest, Model model) {
         if (httpServletRequest.isUserInRole("ADMIN")) {
-            return "/admin/admin_index";
+            return "admin/admin_index";
         } else if (httpServletRequest.isUserInRole("USER")) {
-            return "/user_index";
+            return "user_index";
         } else {
-            return "/user_index";
+            return "user_index";
         }
     }
 }

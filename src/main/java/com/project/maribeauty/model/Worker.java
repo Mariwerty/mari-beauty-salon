@@ -25,4 +25,7 @@ public class Worker {
     //join with services table
     @ManyToMany(mappedBy = "workers", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<ServiceItem> serviceItems;
+
+    public Worker(Integer workerId, String annaIvanova, String s, String s1) {
+    }
 }

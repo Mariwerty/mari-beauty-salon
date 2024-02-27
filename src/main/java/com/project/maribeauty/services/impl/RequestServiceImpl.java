@@ -8,7 +8,6 @@ import com.project.maribeauty.services.RequestService;
 import com.project.maribeauty.services.ServiceItemService;
 import com.project.maribeauty.services.WorkerService;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +34,7 @@ public class RequestServiceImpl implements RequestService {
 
     @org.springframework.beans.factory.annotation.Value("60")
     private String durationTime;
+
 
     @Override
     public List<LocalTime> getAvailableRequestByDateAndWorker(String dateString, Integer workerId) {

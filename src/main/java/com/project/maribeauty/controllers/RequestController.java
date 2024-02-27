@@ -25,14 +25,14 @@ public class RequestController {
     @GetMapping("/service")
     public String selectService(Model model){
         model.addAttribute("services", itemService.getAllServiceItems());
-        return "/bookings/select_service";
+        return "bookings/select_service";
     }
 
     @GetMapping("/employee")
     public String selectEmployeeForService(@RequestParam Integer serviceId, Model model){
         model.addAttribute("serviceId", serviceId);
         model.addAttribute("workers", itemService.getAllEmployeeForService(serviceId));
-        return "/bookings/select_employee";
+        return "bookings/select_employee";
     }
 
     @GetMapping("/appointment")
@@ -54,7 +54,7 @@ public class RequestController {
         model.addAttribute("dateString", dateString);
         model.addAttribute("timeString", timeString);
         model.addAttribute("requestDto", new RequestDto());
-        return "/bookings/client_form";
+        return "bookings/client_form";
     }
 
     @PostMapping("/save")
@@ -65,7 +65,7 @@ public class RequestController {
         model.addAttribute("dateString", requestDto.getRequestDate());
         model.addAttribute("timeString", requestDto.getStartTime());
         if (result.hasErrors()){
-            return "/bookings/client_form";
+            return "bookings/client_form";
         }
         requestService.saveRequest(requestDto);
         return "bookings/book_confirm";

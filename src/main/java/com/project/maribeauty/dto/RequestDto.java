@@ -1,7 +1,5 @@
 package com.project.maribeauty.dto;
 
-import com.project.maribeauty.model.ServiceItem;
-import com.project.maribeauty.model.Worker;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
