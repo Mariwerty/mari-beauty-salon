@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Index Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+  <div class="container-fluid">
+    <a class="navbar-brand" th:href="@{/admin/admin_index.html}">Панель администратора</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarBackToMainPage">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/}">Выход</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="fs-5 ms-3" th:fragment="content">
+  <p>
+    Добро пожаловать, <span th:text="${#authentication.name}"></span>!</br></br>
+    Выберите дальнейшее действие:
+  </p>
+</div>
+<div class="ms-3" th:fragment="content">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" th:href="@{/admin/view_bookings}">Просмотреть список записей на услуги</a>
+    </li>
+  </ul>
+</div>
+<div class="ms-3" th:fragment="content">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" th:href="@{/admin/users_list}">Просмотреть список зарегистрированных пользователей</a>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

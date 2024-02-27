@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="UTF-8">
+  <title>List of Bookings</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+  <div class="container-fluid">
+    <a class="navbar-brand" th:href="@{/admin/admin_index}">Панель администратора</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarBackToAdminPage">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/admin/admin_index}">Вернуться в панель администратора</a>
+        </li>
+      </ul>
+    </div>
+    <div id="navbarBackToMainPage">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/}">Выход</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row col-md-10">
+    <h2>Список записей клиентов на услуги</h2>
+  </div>
+  <table class="table table-bordered table-hover">
+    <thead class="table-info">
+    <tr>
+      <th>Дата записи</th>
+      <th>Время начала</th>
+      <th>Имя клиента</th>
+      <th>Телефон клиента</th>
+      <th>Услуга</th>
+      <th>Сотрудник</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "request : ${requests}">
+      <td th:text = "${request.requestDate}"></td>
+      <td th:text = "${request.startTime}"></td>
+      <td th:text = "${request.clientName}"></td>
+      <td th:text = "${request.clientPhoneNumber}"></td>
+      <td th:text = "${request.serviceName}"></td>
+      <td th:text = "${request.workerName}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<a class="nav-link active" aria-current="page" th:href="@{/admin/admin_index}">Назад</a>
+</body>
+</html>
